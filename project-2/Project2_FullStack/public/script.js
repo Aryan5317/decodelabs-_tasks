@@ -1,0 +1,2 @@
+async function getUsers(){const r=await fetch('/api/users');document.getElementById('out').textContent=JSON.stringify(await r.json(),null,2);}
+async function addUser(){const name=document.getElementById('name').value;const r=await fetch('/api/users',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name})});document.getElementById('out').textContent=JSON.stringify(await r.json(),null,2);document.getElementById('name').value='';}
