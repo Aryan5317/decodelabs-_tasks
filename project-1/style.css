@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: #2196f3;
+    color: #fff
+}
+
+.nav-links {
+    display: flex;
+    list-style: none
+}
+
+.nav-links li {
+    margin: 0 10px
+}
+
+.menu {
+    display: none
+}
+
+@media(max-width:768px) {
+    .menu {
+        display: block
+    }
+
+    .nav-links {
+        display: none
+    }
+
+    .nav-links.show {
+        display: block
+    }
+}

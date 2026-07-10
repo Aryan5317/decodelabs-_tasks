@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog API — Console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <header class="titleblock">
+    <div class="titleblock__left">
+      <span class="titleblock__eyebrow">PROJECT 3 — DATABASE INTEGRATION</span>
+      <h1 class="titleblock__title">Blog API Console</h1>
+    </div>
+    <div class="titleblock__right">
+      <div class="status" id="status">
+        <span class="status__dot" id="statusDot"></span>
+        <span id="statusText">Checking connection…</span>
+      </div>
+      <span class="titleblock__rev">REV.01 · SQLite + Sequelize</span>
+    </div>
+  </header>
+
+  <main class="grid">
+
+    <!-- USERS PANEL -->
+    <section class="panel" aria-labelledby="usersHeading">
+      <div class="panel__head">
+        <span class="panel__index">01</span>
+        <h2 id="usersHeading">Users</h2>
+      </div>
+
+      <form id="userForm" class="form">
+        <input type="hidden" id="userEditId">
+        <div class="form__row">
+          <label for="username">Username</label>
+          <input id="username" name="username" required minlength="3" maxlength="30" placeholder="jane_doe">
+        </div>
+        <div class="form__row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="jane@example.com">
+        </div>
+        <div class="form__row">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="••••••••">
+          <span class="form__hint" id="passwordHint">Stored as a bcrypt hash — never shown again.</span>
+        </div>
+        <div class="form__actions">
+          <button type="submit" class="btn btn--primary" id="userSubmitBtn">Add user</button>
+          <button type="button" class="btn btn--ghost" id="userCancelBtn" hidden>Cancel edit</button>
+        </div>
+      </form>
+
+      <div class="list" id="userList">
+        <p class="empty">No users yet. Add one above to get started.</p>
+      </div>
+    </section>
+
+    <!-- POSTS PANEL -->
+    <section class="panel" aria-labelledby="postsHeading">
+      <div class="panel__head">
+        <span class="panel__index">02</span>
+        <h2 id="postsHeading">Posts</h2>
+      </div>
+
+      <form id="postForm" class="form">
+        <input type="hidden" id="postEditId">
+        <div class="form__row">
+          <label for="postAuthor">Author</label>
+          <select id="postAuthor" required>
+            <option value="" disabled selected>Select a user…</option>
+          </select>
+        </div>
+        <div class="form__row">
+          <label for="postTitle">Title</label>
+          <input id="postTitle" required maxlength="150" placeholder="My first post">
+        </div>
+        <div class="form__row">
+          <label for="postContent">Content</label>
+          <textarea id="postContent" required rows="3" placeholder="Write something…"></textarea>
+        </div>
+        <div class="form__actions">
+          <button type="submit" class="btn btn--primary" id="postSubmitBtn">Publish post</button>
+          <button type="button" class="btn btn--ghost" id="postCancelBtn" hidden>Cancel edit</button>
+        </div>
+      </form>
+
+      <div class="list" id="postList">
+        <p class="empty">No posts yet. Publish one above.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="foot">
+    <span>Endpoints: <code>/api/users</code> · <code>/api/posts</code></span>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
